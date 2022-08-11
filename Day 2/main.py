@@ -1,3 +1,6 @@
+import enum
+
+
 with open("input.txt") as f:
  data = f.read()
 
@@ -14,6 +17,17 @@ def Part1 ():
   print(f"Total is: {total}")
 
 def Part2():
-  pass
-
+  total = 0
+  for row in processed_data:
+    # Sorting just to make the division easier later.
+    row.sort()
+    for num1 in row:
+      for num2 in row:
+        # Find the two numbers in each row that divide evenly
+        # Also make sure that the two are not the same number.
+        if( num2 % num1 == 0 and num1 != num2):
+          # Divide those two numbers to get a results
+          total += num2 / num1
+          break
+  print(int(total))
 Part2()
